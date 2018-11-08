@@ -19,26 +19,23 @@
 
 	</script>
 
-	<!-- Numeric -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js">
-	</script>
-	<!-- Numeral.js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js">
-	</script>
-	<!-- jStat -->
-	<script src="https://cdn.jsdelivr.net/jstat/latest/jstat.min.js">
-	</script>
+	
 	<!-- handsontable -->
 	<script src="../lib/js/handsontable.full.min.js">
 
 	</script>
+    
+<!--    <script src="https://cdn.jsdelivr.net/npm/handsontable-pro@6.1.1/dist/handsontable.full.min.js"></script>-->
 	<link href="../lib/css/handsontable.full.min.css" rel="stylesheet" media="screen">
-	<script src="../lib/js/formula.min.js">
 
-	</script>
-	<script src="../lib/js/formula-parser.min.js">
+<!--    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable-pro@6.1.1/dist/handsontable.full.min.css">-->
 
-	</script>
+<!--	<script src="../lib/js/formula.min.js">
+
+	</script>-->
+<!--	<script src="../lib/js/formula-parser.js">
+
+	</script>-->
 
 
 
@@ -106,13 +103,10 @@
                             var container = document.getElementById('datatab');
                             var hot = new Handsontable(container, {
                                 data: data,
-                                rowHeaders: true,
                                 colHeaders: true,
-                                filters: true,
-                                dropdownMenu: true,
-                                filters: true,
-                                formulas:true,
-                                contextMenu:true
+                                rowHeaders: true,
+                                contextMenu: true,
+                                formulas: true
                             });
                         }
                     </script>
