@@ -20,7 +20,7 @@ export default new Router({
     },
     {
       path: '/uncertainty',
-      component: Uncertainty,
+      component: Uncertainty
     },
     {
       path: '/uncertainty/single',

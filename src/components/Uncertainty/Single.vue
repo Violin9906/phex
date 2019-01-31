@@ -62,7 +62,36 @@
     </div>
     <div class="row clearfix">
       <div class="col-md-12 column">
-        {{this.ReportCompleted}}
+        <div id="report" v-show="ReportCompleted" style="position:relative; height:auto; overflow:auto;">
+          <strong><h2 style="font-family:Simsun;font-weight:900;text-decoration:underline;text-align:center">实   验   报   告</h2></strong>
+          <p style="text-align:center;font-family:Simsun;">___________系__________级  姓名_______________________  日期__________________  NO.______________
+          </p>
+          <hr>
+          <p>
+            数据的平均值<br>
+            $$ \bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i={ {{result.average}} } $$
+          </p>
+          <p>
+            数据的样本标准差<br>
+            $$ \sigma=\sqrt{\frac{\sum_{i=1}^{n}\lgroup x_i-\bar{x}\rgroup ^2}{n-1}}={{result.stdDevi}} $$
+          </p>
+          <p>
+            数据的A类不确定度<br>
+            $$ t_P u_A=\frac{t_P \sigma}{\sqrt{n}}={{result.tpUa}} $$
+          </p>
+          <p>
+            数据的B类不确定度<br>
+            $$ k_P u_B=k_P\frac{\Delta_{仪}}{C}={{result.kpUb}} $$
+          </p>
+          <p>
+            数据的合成展伸不确定度<br>
+            $$ U_{ {{ parameter.p }} }=\sqrt{\lgroup t_P u_A\rgroup ^2+\lgroup k_P u_B\rgroup ^2}={{result.u}} $$
+          </p>
+          <p>
+            数据的最终测量结果<br>
+            $$ x={{result.average}}\quad\pm\quad{{result.u}}\qquad P={{parameter.p}} $$
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -113,6 +142,13 @@ export default {
         t: 2.78,
         kp: 1.96
       },
+      result: {
+        average: 0,
+        stdDevi: 0,
+        tpUa: 0,
+        kpUb: 0,
+        u: 0
+      },
       isMounted: false,
       DataCompleted: false,
       ReportCompleted: false
@@ -122,32 +158,54 @@ export default {
     HotTable
   },
   computed: {
+    /**
+     * @return {boolean}
+     */
     ParameterCompleted: function () {
+      if (this.parameter.n < 3) {
+        return false
+      }
       if (this.parameter.n == null || this.parameter.p == null || this.parameter.delta == null || this.parameter.c == null || this.parameter.t == null || this.parameter.kp == null) {
         return false
       }
-      if (this.parameter.n === '' || this.parameter.p === '' || this.parameter.delta === '' || this.parameter.c === '' || this.parameter.t === '' || this.parameter.kp === '') {
-        return false
-      }
-      return true
+      return !(this.parameter.n === '' || this.parameter.p === '' || this.parameter.delta === '' || this.parameter.c === '' || this.parameter.t === '' || this.parameter.kp === '');
+
     }
   },
   methods: {
     ChgN: function () {
-      this.parameter.t = ArrayT[this.parameter.p][this.parameter.n]
-      this.settings.data = []
+      this.parameter.t = ArrayT[this.parameter.p][this.parameter.n];
+      this.settings.data = [];
       for (let i = 0; i < this.parameter.n; i++) {
         this.settings.data.splice(i, 0, [''])
       }
     },
     ChgP: function () {
-      this.parameter.t = ArrayT[this.parameter.p][this.parameter.n]
+      this.parameter.t = ArrayT[this.parameter.p][this.parameter.n];
       this.parameter.kp = ArrayKp[this.parameter.p][this.parameter.c]
     },
     ChgC: function () {
       this.parameter.kp = ArrayKp[this.parameter.p][this.parameter.c]
     },
     Analyze: function () {
+      // TODO
+      let sum=0;
+      let sumsqr=0;
+      for(let i = 0; i < this.parameter.n; i++) {
+        sum += parseFloat(this.settings.data[i][0]);
+        sumsqr += Math.pow(parseFloat(this.settings.data[i][0]),2)
+      }
+
+      console.log(sumsqr);
+
+      this.result.average = sum / this.parameter.n;
+      this.result.stdDevi = Math.sqrt((this.parameter.n / (this.parameter.n - 1)) * (sumsqr / this.parameter.n - Math.pow(this.result.average,2)));
+      this.result.tpUa = this.parameter.t * this.result.stdDevi / Math.sqrt(this.parameter.n);
+      this.result.kpUb = this.parameter.kp * this.parameter.delta / this.parameter.c;
+      this.result.u = Math.sqrt(Math.pow(this.result.tpUa,2) + Math.pow(this.result.kpUb,2));
+
+      setTimeout(function() { MathJax.Hub.Queue(["Typeset", MathJax.Hub]); }, 100 * this.parameter.n);  // compile LaTeX too early may cause trouble
+
       this.ReportCompleted = true
     }
   },

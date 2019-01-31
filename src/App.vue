@@ -42,7 +42,7 @@
       <div class="container">
         <div class="row clearfix">
           <div class="col-md-12 column" style="text-align: center;">
-            <img style="margin:30px auto;margin-top:80px;" src="./assets/logo-white.png" height="200px" width="230px"></img>
+            <img style="margin:30px auto;margin-top:80px;" src="./assets/logo-white.png" height="200px" width="230px" />
             <h1 style="color:white">中国滑稽大学大物实验数据处理系统</h1>
           </div>
         </div>
