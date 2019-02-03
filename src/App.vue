@@ -30,7 +30,7 @@
             </li>
             <li class="dropdown"><router-link to="/pedia" class="dropdown-toggle" data-toggle="dropdown">大雾百科<span class="caret"></span></router-link>
               <ul class="dropdown-menu">
-                <li><router-link to="/pedia/constant">物理学常数表</router-link></li>
+                <li><router-link to="/pedia/constants">物理学常数表</router-link></li>
               </ul>
             </li>
             <li><router-link to="/about">关于</router-link></li>

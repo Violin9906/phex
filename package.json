@@ -1,7 +1,7 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
+  "name": "phex",
+  "version": "2.2.0",
+  "description": "A Toolkit of College Physics Experiment",
   "author": "violinwang <violincorn@gmail.com>",
   "private": true,
   "scripts": {

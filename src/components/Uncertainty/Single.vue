@@ -188,7 +188,6 @@ export default {
       this.parameter.kp = ArrayKp[this.parameter.p][this.parameter.c]
     },
     Analyze: function () {
-      // TODO
       let sum = 0
       let sumsqr = 0
       for (let i = 0; i < this.parameter.n; i++) {
@@ -202,7 +201,7 @@ export default {
       this.result.kpUb = this.parameter.kp * this.parameter.delta / this.parameter.c
       this.result.u = Math.sqrt(Math.pow(this.result.tpUa, 2) + Math.pow(this.result.kpUb, 2))
 
-      setTimeout(function () { MathJax.Hub.Queue(['Typeset', MathJax.Hub]) }, 200 * this.parameter.n) // compile LaTeX too early may cause trouble
+      setTimeout(function () { MathJax.Hub.Queue(['Typeset', MathJax.Hub]) }, 200 * this.parameter.n) // compile LaTeX too early may cause trouble TODO
 
       this.ReportCompleted = true
     }

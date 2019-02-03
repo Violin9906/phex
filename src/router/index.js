@@ -9,6 +9,11 @@ import UncertaintySingle from '@/components/Uncertainty/Single'
 import Regression from '@/components/Regression/Regression'
 import RegressionLinear from '@/components/Regression/Linear'
 
+import Pedia from '@/components/Pedia/Pedia'
+import PediaConstants from '@/components/Pedia/Constants'
+
+import NotFoundComponent from '@/components/NotFound'
+
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +41,18 @@ export default new Router({
     {
       path: '/regression/linear',
       component: RegressionLinear
+    },
+    {
+      path: '/pedia',
+      component: Pedia
+    },
+    {
+      path: '/pedia/constants',
+      component: PediaConstants
+    },
+    {
+      path: '*',
+      component: NotFoundComponent
     }
   ]
 })
