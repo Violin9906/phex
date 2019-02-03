@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 
 // import $ from 'jquery'
+import 'handsontable-pro/dist/handsontable.full.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 

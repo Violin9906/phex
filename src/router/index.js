@@ -2,9 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/Index'
 import About from '@/components/About'
+
 import Uncertainty from '@/components/Uncertainty/Uncertainty'
 import UncertaintySingle from '@/components/Uncertainty/Single'
-import HelloWorld from '@/components/HelloWorld'
+
+import Regression from '@/components/Regression/Regression'
+import RegressionLinear from '@/components/Regression/Linear'
 
 Vue.use(Router)
 
@@ -27,9 +30,12 @@ export default new Router({
       component: UncertaintySingle
     },
     {
-      path: '/hello',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/regression',
+      component: Regression
+    },
+    {
+      path: '/regression/linear',
+      component: RegressionLinear
     }
   ]
 })

@@ -98,14 +98,17 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 import { HotTable } from '@handsontable-pro/vue'
-var ArrayT = {
+
+const ArrayT = {
   '0.68': {3: 1.32, 4: 1.20, 5: 1.14, 6: 1.11, 7: 1.09, 8: 1.08, 9: 1.07, 10: 1.06, 15: 1.04, 20: 1.03},
   '0.90': {3: 2.92, 4: 2.35, 5: 2.13, 6: 2.02, 7: 1.94, 8: 1.86, 9: 1.83, 10: 1.76, 15: 1.73, 20: 1.71},
   '0.95': {3: 4.30, 4: 3.18, 5: 2.78, 6: 2.57, 7: 2.46, 8: 2.37, 9: 2.31, 10: 2.26, 15: 2.15, 20: 2.09},
   '0.99': {3: 9.93, 4: 5.84, 5: 4.60, 6: 4.03, 7: 3.71, 8: 3.50, 9: 3.36, 10: 3.25, 15: 2.98, 20: 2.86}
 }
-var ArrayKp = {
+const ArrayKp = {
   '0.68': { '3': 1, '1.73205080757': 1.183, '2.44948974278': 1.064 },
   '0.90': { '3': 1.65, '1.73205080757': 1.559, '2.44948974278': 1.675 },
   '0.95': { '3': 1.96, '1.73205080757': 1.645, '2.44948974278': 1.901 },
@@ -127,11 +130,7 @@ export default {
           this.ReportCompleted = false
           if (this.isMounted && (this.$children[0].hotInstance.countEmptyRows() !== 0)) {
             this.DataCompleted = false
-          } else if (!this.isMounted) {
-            this.DataCompleted = false
-          } else {
-            this.DataCompleted = true
-          }
+          } else this.DataCompleted = this.isMounted
         }
       },
       parameter: {
@@ -168,20 +167,21 @@ export default {
       if (this.parameter.n == null || this.parameter.p == null || this.parameter.delta == null || this.parameter.c == null || this.parameter.t == null || this.parameter.kp == null) {
         return false
       }
-      return !(this.parameter.n === '' || this.parameter.p === '' || this.parameter.delta === '' || this.parameter.c === '' || this.parameter.t === '' || this.parameter.kp === '');
-
+      return !(this.parameter.n === '' || this.parameter.p === '' || this.parameter.delta === '' || this.parameter.c === '' || this.parameter.t === '' || this.parameter.kp === '')
     }
   },
   methods: {
     ChgN: function () {
-      this.parameter.t = ArrayT[this.parameter.p][this.parameter.n];
-      this.settings.data = [];
-      for (let i = 0; i < this.parameter.n; i++) {
-        this.settings.data.splice(i, 0, [''])
+      this.parameter.t = ArrayT[this.parameter.p][this.parameter.n]
+      if (this.parameter.n >= 3) {
+        this.settings.data = []
+        for (let i = 0; i < this.parameter.n; i++) {
+          this.settings.data.splice(i, 0, [''])
+        }
       }
     },
     ChgP: function () {
-      this.parameter.t = ArrayT[this.parameter.p][this.parameter.n];
+      this.parameter.t = ArrayT[this.parameter.p][this.parameter.n]
       this.parameter.kp = ArrayKp[this.parameter.p][this.parameter.c]
     },
     ChgC: function () {
@@ -189,22 +189,20 @@ export default {
     },
     Analyze: function () {
       // TODO
-      let sum=0;
-      let sumsqr=0;
-      for(let i = 0; i < this.parameter.n; i++) {
-        sum += parseFloat(this.settings.data[i][0]);
-        sumsqr += Math.pow(parseFloat(this.settings.data[i][0]),2)
+      let sum = 0
+      let sumsqr = 0
+      for (let i = 0; i < this.parameter.n; i++) {
+        sum += parseFloat(this.settings.data[i][0])
+        sumsqr += Math.pow(parseFloat(this.settings.data[i][0]), 2)
       }
 
-      console.log(sumsqr);
+      this.result.average = sum / this.parameter.n
+      this.result.stdDevi = Math.sqrt((this.parameter.n / (this.parameter.n - 1)) * (sumsqr / this.parameter.n - Math.pow(this.result.average, 2)))
+      this.result.tpUa = this.parameter.t * this.result.stdDevi / Math.sqrt(this.parameter.n)
+      this.result.kpUb = this.parameter.kp * this.parameter.delta / this.parameter.c
+      this.result.u = Math.sqrt(Math.pow(this.result.tpUa, 2) + Math.pow(this.result.kpUb, 2))
 
-      this.result.average = sum / this.parameter.n;
-      this.result.stdDevi = Math.sqrt((this.parameter.n / (this.parameter.n - 1)) * (sumsqr / this.parameter.n - Math.pow(this.result.average,2)));
-      this.result.tpUa = this.parameter.t * this.result.stdDevi / Math.sqrt(this.parameter.n);
-      this.result.kpUb = this.parameter.kp * this.parameter.delta / this.parameter.c;
-      this.result.u = Math.sqrt(Math.pow(this.result.tpUa,2) + Math.pow(this.result.kpUb,2));
-
-      setTimeout(function() { MathJax.Hub.Queue(["Typeset", MathJax.Hub]); }, 100 * this.parameter.n);  // compile LaTeX too early may cause trouble
+      setTimeout(function () { MathJax.Hub.Queue(['Typeset', MathJax.Hub]) }, 200 * this.parameter.n) // compile LaTeX too early may cause trouble
 
       this.ReportCompleted = true
     }
@@ -215,5 +213,3 @@ export default {
 }
 </script>
 
-<style src="../../../node_modules/handsontable-pro/dist/handsontable.full.css">
-</style>

@@ -20,7 +20,7 @@
             </li>
             <li class="dropdown"><router-link to="/regression" class="dropdown-toggle" data-toggle="dropdown">回归分析<span class="caret"></span></router-link>
               <ul class="dropdown-menu">
-                <li><router-link to="/regression/liner">线性回归</router-link></li>
+                <li><router-link to="/regression/linear">线性回归</router-link></li>
               </ul>
             </li>
             <li class="dropdown"><router-link to="/stat" class="dropdown-toggle" data-toggle="dropdown">数理统计分析<span class="caret"></span></router-link>
@@ -92,7 +92,7 @@ export default {
     min-width: 80%;
     padding:0;
     margin:0;
-    font:normal 20px "\5FAE\8F6F\96C5\9ED1";
+    font:normal 20px "\5FAE\8F6F\96C5\9ED1" !important;
     color:#444;
     background-image:url(./assets/background.png);
     background-repeat:no-repeat;
@@ -113,5 +113,14 @@ export default {
   }
   .page-article p {
     text-indent: 2em;
+  }
+  /* handsontable自定义样式 */
+  @media screen and (max-width:600px) {
+    .ht-responsive {
+      min-height: 100px;
+      max-height: 400px;
+      max-width: 100%;
+      overflow-x: scroll;
+    }
   }
 </style>

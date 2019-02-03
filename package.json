@@ -16,8 +16,11 @@
     "@handsontable-pro/vue": "^3.1.0",
     "bootstrap": "^3.4.0",
     "handsontable-pro": "^6.2.2",
+    "highcharts": "^7.0.2",
     "jquery": "^3.3.1",
+    "simple-statistics": "^7.0.0",
     "vue": "^2.5.2",
+    "vue-json-editor": "^1.2.3",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
