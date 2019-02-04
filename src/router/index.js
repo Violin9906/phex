@@ -9,6 +9,8 @@ import UncertaintySingle from '@/components/Uncertainty/Single'
 import Regression from '@/components/Regression/Regression'
 import RegressionLinear from '@/components/Regression/Linear'
 
+import StatSd from '@/components/Stat/Sd'
+
 import Pedia from '@/components/Pedia/Pedia'
 import PediaConstants from '@/components/Pedia/Constants'
 
@@ -41,6 +43,10 @@ export default new Router({
     {
       path: '/regression/linear',
       component: RegressionLinear
+    },
+    {
+      path: '/stat/sd',
+      component: StatSd
     },
     {
       path: '/pedia',

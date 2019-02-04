@@ -62,6 +62,7 @@
           斜率m：{{ result.m }}<br>
           截距b：{{ result.b }}<br>
           相关系数r：{{ result.r.toFixed(4) }}<br>
+          R平方值：{{ result.rSquare.toFixed(4) }}
         </p>
       </div>
     </div>
@@ -219,7 +220,8 @@ export default {
       result: {
         b: 0,
         m: 0,
-        r: 0
+        r: 0,
+        rSquare: 0
       },
       isMounted: false,
       DataCompleted: true,
@@ -279,6 +281,8 @@ export default {
       this.result.m = ss.linearRegression(data).m
       this.result.b = ss.linearRegression(data).b
       this.result.r = ss.sampleCorrelation(dataX, dataY)
+      this.result.rSquare = ss.rSquared(data, ss.linearRegressionLine(ss.linearRegression(data)))
+
       this.ReportCompleted = true
     }
   },

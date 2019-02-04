@@ -27,4 +27,5 @@ npm test
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Release Notes
-* `v 2.2.0` `2019-02-03`单变量不确定度分析、线性回归分析的基本功能完成
+* `v 2.2.0-pre.1` `2019-02-03`单变量不确定度分析、线性回归分析的基本功能完成
+* `v 2.2.0-pre.4` `2019-02-04`单变量不确定度分析、线性回归分析、单变量数理统计的基本功能完成

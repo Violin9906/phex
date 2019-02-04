@@ -53,8 +53,15 @@
               <input type="number" class="form-control" v-model="parameter.kp" @change="ReportCompleted = false" id="data_kp">
             </div>
           </div>
+          <div class="form-group">
+            <label for="ManulLaTeX" class="col-md-4 control-label" style="margin:-4px" title="通常情况下您不需要勾选该选项。如果您发现生成的实验报告中公式显示出现问题，请勾选此项，待分析完成后点击'渲染公式'按钮">手动渲染LaTeX公式</label>
+            <div class="col-md-3">
+              <input type="checkbox" v-model="ManualLaTeX" @change="ReportCompleted = false" id="ManulLaTeX">
+            </div>
+          </div>
         </form>
         <button class="btn btn-primary btn-block" :disabled="ParameterCompleted===false || DataCompleted===false" style="margin-bottom:15px" @click="Analyze">开始分析</button>
+        <button class="btn btn-success btn-block" :disabled="ReportCompleted===false" style="margin-bottom:15px" @click="CompileLaTeX" v-show="ManualLaTeX">渲染公式</button>
       </div>
       <div class="col-md-6 column">
         <hot-table :settings="settings"></hot-table>
@@ -63,8 +70,8 @@
     <div class="row clearfix">
       <div class="col-md-12 column">
         <div id="report" v-show="ReportCompleted" style="position:relative; height:auto; overflow:auto;">
-          <strong><h2 style="font-family:Simsun;font-weight:900;text-decoration:underline;text-align:center">实   验   报   告</h2></strong>
-          <p style="text-align:center;font-family:Simsun;">___________系__________级  姓名_______________________  日期__________________  NO.______________
+          <strong><h2 style="font-family:Simsun, 'Times New Roman', serif ;font-weight:900;text-decoration:underline;text-align:center">实   验   报   告</h2></strong>
+          <p style="text-align:center;font-family:Simsun, 'Times New Roman', serif;">___________系__________级  姓名_______________________  日期__________________  NO.______________
           </p>
           <hr>
           <p>
@@ -150,7 +157,8 @@ export default {
       },
       isMounted: false,
       DataCompleted: false,
-      ReportCompleted: false
+      ReportCompleted: false,
+      ManualLaTeX: false
     }
   },
   components: {
@@ -187,6 +195,9 @@ export default {
     ChgC: function () {
       this.parameter.kp = ArrayKp[this.parameter.p][this.parameter.c]
     },
+    CompileLaTeX: function () {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub])
+    },
     Analyze: function () {
       let sum = 0
       let sumsqr = 0
@@ -201,7 +212,9 @@ export default {
       this.result.kpUb = this.parameter.kp * this.parameter.delta / this.parameter.c
       this.result.u = Math.sqrt(Math.pow(this.result.tpUa, 2) + Math.pow(this.result.kpUb, 2))
 
-      setTimeout(function () { MathJax.Hub.Queue(['Typeset', MathJax.Hub]) }, 200 * this.parameter.n) // compile LaTeX too early may cause trouble TODO
+      if (!this.ManualLaTeX) {
+        setTimeout(function () { MathJax.Hub.Queue(['Typeset', MathJax.Hub]) }, 200 * this.parameter.n)
+      } // compile LaTeX too early may cause trouble
 
       this.ReportCompleted = true
     }
