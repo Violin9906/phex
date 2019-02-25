@@ -18,6 +18,7 @@
     "handsontable-pro": "^6.2.2",
     "highcharts": "^7.0.2",
     "jquery": "^3.3.1",
+    "mathjs": "^5.4.2",
     "simple-statistics": "^7.0.0",
     "vue": "^2.5.2",
     "vue-json-editor": "^1.2.3",

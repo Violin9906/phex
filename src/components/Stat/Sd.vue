@@ -45,6 +45,7 @@
           <span>绝对中位差：{{ result.medianAbsoluteDeviation }} <br></span>
           <span>平均偏差：{{ result.meanDeviation }} <br></span>
           <span>相对平均偏差：{{ result.relativeMeanDeviation }} <br></span>
+          <span>四分位距：{{ result.interquartileRange }} <br></span>
           <hr style="border-color: darkgray">
           <div v-show="ReportCompleted" id="DataPlot"></div>
           <!-- TODO <div v-show="ReportCompleted" id="DistributionPlot"></div> -->
@@ -103,7 +104,8 @@ export default {
         sampleStandardDeviation: 0,
         medianAbsoluteDeviation: 0,
         meanDeviation: 0,
-        relativeMeanDeviation: 0
+        relativeMeanDeviation: 0,
+        interquartileRange: 0
       },
       isMounted: false,
       DataCompleted: false,
@@ -172,6 +174,7 @@ export default {
       this.result.standardDeviation = ss.standardDeviation(data)
       this.result.sampleStandardDeviation = ss.sampleStandardDeviation(data)
       this.result.medianAbsoluteDeviation = ss.medianAbsoluteDeviation(data)
+      this.result.interquartileRange = ss.interquartileRange(data)
 
       let deviAbs = []
       for (let i = 0; i < this.parameter.n; i++) {

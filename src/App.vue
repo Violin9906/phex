@@ -31,6 +31,7 @@
             <li class="dropdown"><router-link to="/pedia" class="dropdown-toggle" data-toggle="dropdown">大雾百科<span class="caret"></span></router-link>
               <ul class="dropdown-menu">
                 <li><router-link to="/pedia/constants">物理学常数表</router-link></li>
+                <li><router-link to="/pedia/solver">一元方程数值求解器</router-link></li>
               </ul>
             </li>
             <li><router-link to="/about">关于</router-link></li>
@@ -74,6 +75,11 @@
           <div class="col-md-3 column"><ul class="list-unstyled"><li>
             <a href="http://home.ustc.edu.cn/~violinwang/donate">捐助作者</a>
           </li></ul></div>
+          <div class="col-md-12 column">
+            <ul class="list-unstyled">
+              <li>版本号：v2.2.0-pre.5预发布版本</li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
@@ -94,7 +100,7 @@ export default {
     margin:0;
     font:normal 20px "\5FAE\8F6F\96C5\9ED1" !important;
     color:#444;
-    background-image:url(./assets/background.png);
+    background-image:url(../static/background.png);
     background-repeat:no-repeat;
     background-size:cover;
     background-attachment: fixed;
@@ -108,6 +114,10 @@ export default {
     background-color: black;
   }
   /* 页面文章样式 */
+  .page-article {
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
   .page-article h2 {
     text-align: center;
   }
