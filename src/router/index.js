@@ -1,22 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/Index'
-import About from '@/components/About'
-
-import Uncertainty from '@/components/Uncertainty/Uncertainty'
-import UncertaintySingle from '@/components/Uncertainty/Single'
-
-import Regression from '@/components/Regression/Regression'
-import RegressionLinear from '@/components/Regression/Linear'
-
-import Stat from '@/components/Stat/Stat'
-import StatSd from '@/components/Stat/Sd'
-
-import Pedia from '@/components/Pedia/Pedia'
-import PediaConstants from '@/components/Pedia/Constants'
-// import PediaSolver from '@/components/Pedia/Solver'
-
-import NotFoundComponent from '@/components/NotFound'
 
 Vue.use(Router)
 
@@ -28,47 +12,69 @@ export default new Router({
     },
     {
       path: '/about',
-      component: About
+      component: function (resolve) {
+        require(['@/components/About'], resolve)
+      }
     },
     {
       path: '/uncertainty',
-      component: Uncertainty
+      component: function (resolve) {
+        require(['@/components/Uncertainty/Uncertainty'], resolve)
+      }
     },
     {
       path: '/uncertainty/single',
-      component: UncertaintySingle
+      component: function (resolve) {
+        require(['@/components/Uncertainty/Single'], resolve)
+      }
     },
     {
       path: '/regression',
-      component: Regression
+      component: function (resolve) {
+        require(['@/components/Regression/Regression'], resolve)
+      }
     },
     {
       path: '/regression/linear',
-      component: RegressionLinear
+      component: function (resolve) {
+        require(['@/components/Regression/Linear'], resolve)
+      }
     },
     {
       path: '/stat',
-      component: Stat
+      component: function (resolve) {
+        require(['@/components/Stat/Stat'], resolve)
+      }
     },
     {
       path: '/stat/sd',
-      component: StatSd
+      component: function (resolve) {
+        require(['@/components/Stat/Sd'], resolve)
+      }
     },
     {
       path: '/pedia',
-      component: Pedia
+      component: function (resolve) {
+        require(['@/components/Pedia/Pedia'], resolve)
+      }
     },
     {
       path: '/pedia/constants',
-      component: PediaConstants
+      component: function (resolve) {
+        require(['@/components/Pedia/Constants'], resolve)
+      }
     },
     /* {
       path: '/pedia/solver',
-      component: PediaSolver
+      component: function (resolve) {
+        require(['@/components/Pedia/Solver'], resolve)
+      }
     }, TODO */
     {
       path: '*',
-      component: NotFoundComponent
+      component: function (resolve) {
+        require(['@/components/NotFound'], resolve)
+      }
     }
   ]
 })
