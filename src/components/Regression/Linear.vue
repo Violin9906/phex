@@ -45,7 +45,7 @@
               <p class="text-danger">
                 硬核警告：这将直接编辑图表主题的JSON对象。可参考<a href="https://api.hcharts.cn/highcharts">HighCharts的API文档</a>进行设置。如果您不知道您在干什么，请不要对此进行设置。
               </p>
-              <vue-json-editor v-model="HighchartsSet"></vue-json-editor>
+              <vue-json-editor v-model="HighchartsSet" :show-btns="true" :mode="'tree'" :lang="'zh'"></vue-json-editor>
             </div>
           </div>
         </div>
