@@ -2,7 +2,8 @@
   <div class="page-article">
     <h2>物理学常数表</h2>
     <p>来源：<a href="https://zh.wikipedia.org/wiki/%E7%89%A9%E7%90%86%E5%B8%B8%E6%95%B8">维基百科</a></p>
-    <table class="table table-striped table-hover">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
       <tbody>
       <tr>
         <td width="183" height="30"><b>量</b>
@@ -1384,7 +1385,8 @@
         </td>
       </tr>
       </tbody>
-    </table>
+      </table>
+    </div>
   </div>
 </template>
 
