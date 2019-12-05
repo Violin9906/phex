@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "12.13.1"
+
+jobs:
+  include:
+    - if: branch = dev
+      install:
+        - "npm ci"
+
+      script:
+        - "npm run build"
+    - if: branch = master
+      install:
+        - "npm ci"
+      script:
+        - "npm run build"
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN
+        target_branch: release
+        local_dir: ./dist
+        keep_history: true
+        on:
+          branch: master
