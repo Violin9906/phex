@@ -16,7 +16,7 @@ jobs:
       script:
         - "npm run build"
       before_deploy:
-        - tar -czvf ./dist/* $TRAVIS_BUILD_ID.tar.gz
+        - tar -czvf $TRAVIS_BUILD_ID.tar.gz ./dist/*
       deploy:
         provider: pages
         skip_cleanup: true
