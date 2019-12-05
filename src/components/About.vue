@@ -8,6 +8,8 @@
       </p>
       <p>现在诸位看到的这个项目，是采用Vue.js框架编写的，使用vue-cli工具构建。网页排版使用Bootstrap框架，数据表格使用Handsontable Pro(Evaluation Version)，绘图使用Highcharts，json编辑器使用vue-json-editor，数据计算大量使用了simple-statistics的函数。在此，向这些项目的开发者表示感谢。
       </p>
+      <p>项目源代码地址：<a href="//git.lug.ustc.edu.cn/violinwang/phex">git@git.lug.ustc.edu.cn:violinwang/phex.git</a>。欢迎提交issues、编辑wiki，也欢迎有能力的开发者加入。
+      </p>
     </div>
     <div class="page-article">
       <h2>关于网站LOGO</h2>
@@ -52,14 +54,26 @@
     <div class="page-article">
       <h2>关于作者</h2>
       <p>
-        作者王若麟，现就读于中国科学技术大学信息科学技术学院，业余爱好前端编程，水平不高。死肥宅一枚，偶尔玩玩天文。长得太丑，照片就不放了。
+        作者王若麟，现就读于中国科学技术大学自动化系，业余爱好前端编程，水平不高。死肥宅一枚，偶尔玩玩天文，莫得女朋友。长得太丑，照片就不放了。
       </p>
+      <p><a href="http://home.ustc.edu.cn/~violinwang/">我的主页</a></p>
     </div>
     <div class="page-article">
       <h2>关于源代码授权</h2>
       <p>
-        任何对PHEX项目源代码进行的基于非商业目的复制、分发和再创作都是合法的。但这仅限于PHEX项目源代码中的原创内容，以及同样遵循此协议的开源项目插件。如果需要使用例如Handsontable Pro等非自由软件，或者SCP基金会的内容，以及用作网站背景的游戏截图，请联系原著作权人以获得许可。
+        PHEX项目遵循MIT源代码授权协议。这仅限于PHEX项目源代码，以及同样遵循此协议的开源项目插件。如果需要使用例如Handsontable Pro等非自由软件，或者SCP基金会的内容，以及用作网站背景的游戏截图，请联系原著作权人以获得许可。
       </p>
+      <blockquote>
+      <h3>MIT License</h3>
+
+      <h4>Copyright (c) 2019 王若麟</h4>
+
+      <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+      <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+      <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </blockquote>
     </div>
   </div>
 </template>

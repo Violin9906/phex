@@ -64,12 +64,14 @@ export default new Router({
         require(['@/components/Pedia/Constants'], resolve)
       }
     },
-    /* {
+    /*
+    {
       path: '/pedia/solver',
       component: function (resolve) {
         require(['@/components/Pedia/Solver'], resolve)
       }
-    }, TODO */
+    },
+    */
     {
       path: '*',
       component: function (resolve) {
