@@ -15,6 +15,8 @@ jobs:
         - "npm ci"
       script:
         - "npm run build"
+      before_deploy:
+        - tar -czvf ./dist/* $TRAVIS_BUILD_ID.tar.gz
       deploy:
         provider: pages
         skip_cleanup: true
@@ -22,5 +24,11 @@ jobs:
         target_branch: gh-pages
         local_dir: ./dist
         keep_history: true
+        on:
+          branch: master
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file: $TRAVIS_BUILD_ID.tar.gz
+        skip_cleanup: true
         on:
           branch: master
