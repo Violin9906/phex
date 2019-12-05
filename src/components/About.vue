@@ -8,7 +8,7 @@
       </p>
       <p>现在诸位看到的这个项目，是采用Vue.js框架编写的，使用vue-cli工具构建。网页排版使用Bootstrap框架，数据表格使用Handsontable Pro(Evaluation Version)，绘图使用Highcharts，json编辑器使用vue-json-editor，数据计算大量使用了simple-statistics的函数。在此，向这些项目的开发者表示感谢。
       </p>
-      <p>项目源代码地址：<a href="//git.lug.ustc.edu.cn/violinwang/phex">git@git.lug.ustc.edu.cn:violinwang/phex.git</a>。欢迎提交issues、编辑wiki，也欢迎有能力的开发者加入。
+      <p>项目源代码地址：<a href="//github.com/Violin9906/phex">git@github.com:Violin9906/phex.git</a>。欢迎提交issues、编辑wiki，也欢迎有能力的开发者加入。
       </p>
     </div>
     <div class="page-article">
