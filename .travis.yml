@@ -18,7 +18,7 @@ jobs:
       after_success:
         - "export PKG_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
         - git tag
-        - if [[ `git tag` =~ $PKG_VERSION ]]; then export RELEASE=flase;tar -czvf $PKG_VERSION.tar.gz ./dist/*;else export RELEASE=true;git tag $PKG_VERSION;fi
+        - if [[ `git tag` =~ $PKG_VERSION ]]; then export RELEASE=flase;else export RELEASE=true;tar -czvf $PKG_VERSION.tar.gz ./dist/*;git tag $PKG_VERSION;fi
         - if [[ $PKG_VERSION =~ \.0$ ]]; then export PRE_RELEASE=false;echo F;else export PRE_RELEASE=true;echo T;fi
         - git tag
         - "echo VERSION: $PKG_VERSION"

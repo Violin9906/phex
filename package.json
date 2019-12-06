@@ -1,6 +1,6 @@
 {
   "name": "phex",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "A Toolkit of College Physics Experiment",
   "author": "violinwang <violincorn@gmail.com>",
   "private": true,
@@ -10,8 +10,7 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
-    "build": "node build/build.js",
-    "release": ". .release.sh"
+    "build": "node build/build.js"
   },
   "dependencies": {
     "@handsontable-pro/vue": "^3.1.0",
