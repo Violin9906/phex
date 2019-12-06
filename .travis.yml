@@ -19,7 +19,7 @@ jobs:
         - "export PKG_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
         - git tag
         - git tag $PKG_VERSION
-        - if [ $? -eq 0 ]; then export RELEASE=true;tar -czvf $PKG_VERSION.tar.gz ./dist/*;else echo $?;export RELEASE=flase;fi
+        - if [ $? -ne 128 ]; then export RELEASE=true;tar -czvf $PKG_VERSION.tar.gz ./dist/*;else echo $?;export RELEASE=flase;fi
         - if [ $PKG_VERSION=~\.0$ ]; then export PRE_RELEASE=false;echo F;else export PRE_RELEASE=true;echo T;fi
         - git tag
         - export
