@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/dash
 
 export PKG_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
 git tag $PKG_VERSION
