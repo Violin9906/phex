@@ -17,8 +17,10 @@ jobs:
         - "npm run build"
       before_deploy:
         - "export PKG_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
+        - git tag
         - git tag $PKG_VERSION
-        - if [ $? -eq 0 ]; then export RELEASE=true;if [ $PKG_VERSION=~\.0$ ]; then export PRE_RELEASE=false;echo F;else export PRE_RELEASE=true;echo T;fi;tar -czvf $PKG_VERSION.tar.gz ./dist/*;fi
+        - if [ $? -eq 0 ]; then export RELEASE=true;tar -czvf $PKG_VERSION.tar.gz ./dist/*;fi
+        - if [ $PKG_VERSION=~\.0$ ]; then export PRE_RELEASE=false;echo F;else export PRE_RELEASE=true;echo T;fi
         - export
       deploy:
         - provider: pages
