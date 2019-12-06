@@ -16,7 +16,7 @@ jobs:
       script:
         - "npm run build"
       before_deploy:
-        - tar -czvf $TRAVIS_BUILD_ID.tar.gz ./dist/*
+        - tar -czvf $TRAVIS_TAG.tar.gz ./dist/*
       deploy:
         provider: pages
         skip_cleanup: true
@@ -28,7 +28,9 @@ jobs:
           branch: master
         provider: releases
         api_key: $GITHUB_TOKEN
-        file: $TRAVIS_BUILD_ID.tar.gz
+        file: $TRAVIS_TAG.tar.gz
         skip_cleanup: true
+        prerelaes: tag =~ /\.[^0]+$/
         on:
           branch: master
+          tags: true
