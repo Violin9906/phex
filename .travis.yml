@@ -32,4 +32,5 @@ jobs:
           prerelease: $PRE_RELEASE
           skip_cleanup: true
           on:
-            tags: true
+            branch: master
+            condition: $RELEASE == true

@@ -139,7 +139,7 @@
 import config from '../package.json'
 export default {
   name: 'App',
-  data: function() {
+  data: function () {
     return {
       version: config.version
     }
