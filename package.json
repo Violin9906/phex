@@ -11,7 +11,7 @@
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js",
-    "release": "source ./.release.sh"
+    "release": ". .release.sh"
   },
   "dependencies": {
     "@handsontable-pro/vue": "^3.1.0",
