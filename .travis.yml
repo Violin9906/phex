@@ -21,6 +21,7 @@ jobs:
         - git tag $PKG_VERSION
         - if [ $? -eq 0 ]; then export RELEASE=true;tar -czvf $PKG_VERSION.tar.gz ./dist/*;else echo $?;export RELEASE=flase;fi
         - if [ $PKG_VERSION=~\.0$ ]; then export PRE_RELEASE=false;echo F;else export PRE_RELEASE=true;echo T;fi
+        - git tag
         - export
       deploy:
         - provider: pages
