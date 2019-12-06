@@ -77,7 +77,7 @@
           </li></ul></div>
           <div class="col-md-12 column">
             <ul class="list-unstyled">
-              <li>版本号：2.1.5</li>
+              <li>版本号：2.2.0</li>
             </ul>
           </div>
         </div>

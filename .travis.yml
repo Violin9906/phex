@@ -33,4 +33,3 @@ jobs:
           prerelaes: tag =~ /\.[^0]+$/
           on:
             branch: master
-            tags: true
