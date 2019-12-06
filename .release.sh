@@ -4,7 +4,7 @@ export PKG_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ prin
 git tag $PKG_VERSION
 if [ $? -eq 0 ]; then
     export RELEASE=true
-    if [ $PKG_VERSION =~ /\.0/ ]; then
+    if [ $PKG_VERSION=~\.0$ ]; then
         export PRE_RELEASE=false
     else
         export PRE_RELEASE=true
