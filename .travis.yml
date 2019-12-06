@@ -16,7 +16,6 @@ jobs:
       script:
         - "npm run build"
       before_deploy:
-        - which source
         - ls -l `which sh`
         - npm run release
         - export
