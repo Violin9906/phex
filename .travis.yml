@@ -16,7 +16,7 @@ jobs:
       script:
         - "npm run build"
       before_deploy:
-        - tar -czvf $TRAVIS_TAG.tar.gz ./dist/*
+        - npm run release
       deploy:
         - provider: pages
           skip_cleanup: true
@@ -28,7 +28,8 @@ jobs:
             branch: master
         - provider: releases
           api_key: $GITHUB_TOKEN
-          file: $TRAVIS_TAG.tar.gz
+          file: $PKG_VERSION.tar.gz
+          prerelease: $PRE_RELEASE
           skip_cleanup: true
           on:
             tags: true
