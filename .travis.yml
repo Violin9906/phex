@@ -17,6 +17,7 @@ jobs:
         - "npm run build"
       before_deploy:
         - npm run release
+        - export
       deploy:
         - provider: pages
           skip_cleanup: true
