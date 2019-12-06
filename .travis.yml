@@ -30,6 +30,5 @@ jobs:
           api_key: $GITHUB_TOKEN
           file: $TRAVIS_TAG.tar.gz
           skip_cleanup: true
-          prerelaes: tag =~ /\.[^0]+$/
           on:
-            branch: master
+            tags: true
