@@ -1,4 +1,13 @@
-# PHEX [![Build Status](https://travis-ci.org/Violin9906/phex.svg?branch=master)](https://travis-ci.org/Violin9906/phex)
+# PHEX
+
+[![Build Status](https://travis-ci.org/Violin9906/phex.svg?branch=master)](https://travis-ci.org/Violin9906/phex)
+![GitHub](https://img.shields.io/github/license/Violin9906/phex)
+![Language](https://img.shields.io/badge/language-vue-green.svg)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Violin9906/phex)
+![GitHub last commit](https://img.shields.io/github/last-commit/Violin9906/phex)
+![GitHub issues](https://img.shields.io/github/issues-raw/Violin9906/phex)
+![GitHub All Releases](https://img.shields.io/github/downloads/Violin9906/phex/total)
+![GitHub stars](https://img.shields.io/github/stars/Violin9906/phex)
 
 > A Toolkit of College Physics Experiment
 
